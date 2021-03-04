@@ -1,4 +1,4 @@
-# Embedded Tomcat -projektipohja [![Build Status](https://travis-ci.org/haagahelia/embedded-tomcat-template.svg?branch=master)](https://travis-ci.org/haagahelia/embedded-tomcat-template)
+# Embedded Tomcat -projektipohja [![Build Status](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/maven.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions)
 
 Tämä malliprojekti on tarkoitettu pohjaksi verkkosovellusten koodaamiseen Haaga-Helian Ohjelmointi 2 -opintojaksolla. Projektissa hyödynnetään Javan Servlet- sekä JSP-teknologioita yhdessä [Apachen Tomcat](http://tomcat.apache.org/) -sovelluspalvelimen kanssa. Projekti sisältää valmiit asetustiedostot sen tuomiseksi Eclipse-sovelluskehittimeen, mutta voit käyttää sitä soveltaen myös muilla kehitystyökaluilla, kuten [VS Code](https://code.visualstudio.com/) tai [IntelliJ IDEA](https://www.jetbrains.com/idea/).
 
