@@ -1,0 +1,26 @@
+name: Deploy to heroku
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Merge Heroku configuration
+      run: git merge origin/heroku
+    - name: Add Heroku remote
+      run: git remote add heroku https://_@git.heroku.com/embedded-tomcat-template.git
+    - name: Push to Heroku
+      run: |
+        echo 'echo ${{ secrets.HEROKU_API_KEY }}' > ~/.git-askpass
+        chmod +x ~/.git-askpass
+        export GIT_ASKPASS=~/.git-askpass
+        git push heroku master --force
+        rm ~/.git-askpass
