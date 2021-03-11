@@ -14,7 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Merge Heroku configuration
-      run: git merge origin/heroku
+      run: | 
+        git checkout heroku
+        git checkout master
+        git merge heroku
     - name: Add Heroku remote
       run: git remote add heroku https://_@git.heroku.com/embedded-tomcat-template.git
     - name: Push to Heroku
