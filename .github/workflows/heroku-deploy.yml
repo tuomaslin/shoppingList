@@ -17,6 +17,8 @@ jobs:
         fetch-depth: 0
     - name: Merge Heroku configuration
       run: | 
+        git config --global user.email "44917122+swd1tn002@users.noreply.github.com"
+        git config --global user.name "Github Actions"
         git merge origin/heroku
     - name: Add Heroku remote
       run: git remote add heroku https://_@git.heroku.com/embedded-tomcat-template.git
