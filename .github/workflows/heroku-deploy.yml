@@ -17,7 +17,7 @@ jobs:
         fetch-depth: 0
     - name: Merge Heroku configuration
       run: | 
-        git merge heroku
+        git merge origin/heroku
     - name: Add Heroku remote
       run: git remote add heroku https://_@git.heroku.com/embedded-tomcat-template.git
     - name: Push to Heroku
