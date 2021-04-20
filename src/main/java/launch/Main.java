@@ -18,19 +18,29 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        // Web-sovelluksen julkisten tiedostojen sijainti:
-        String webappDirPath = new File("src/main/webapp/").getAbsolutePath();
+        // Jos "PORT" löytyy ympäristömuuttujista, käytetään sitä. Muussa tapauksessa
+        // käytetään porttia 8080:
+        int httpPort = Integer.valueOf(System.getenv().getOrDefault("PORT", "8080"));
 
+        Tomcat tomcat = createServer(httpPort);
+
+        // Käynnistetään palvelin ja odotetaan yhteyksiä:
+        tomcat.start();
+        tomcat.getServer().await();
+    }
+
+    public static Tomcat createServer(int httpPort) {
         // Tomcat-palvelin, joka huolehtii HTTP-liikenteestä:
         Tomcat tomcat = new Tomcat();
 
-        // Asetetaan Tomcatin HTTP-portti. Jos "PORT" löytyy ympäristömuuttujista,
-        // käytetään sitä. Muussa tapauksessa käytetään porttia 8080:
-        String httpPort = System.getenv().getOrDefault("PORT", "8080");
-        tomcat.setPort(Integer.valueOf(httpPort));
+        // Asetetaan kuunneltava Tomcatin HTTP-portti.
+        tomcat.setPort(httpPort);
 
         // Luodaan Connector-olio, joka kuuntelee asettamaamme porttia:
         tomcat.getConnector();
+
+        // Web-sovelluksen julkisten tiedostojen sijainti:
+        String webappDirPath = new File("src/main/webapp/").getAbsolutePath();
 
         // Lisätään oma sovelluksemme Tomcatiin palvelimen juureen:
         Context webApp = tomcat.addWebapp("/", webappDirPath);
@@ -49,8 +59,6 @@ public class Main {
         webApp.setRequestCharacterEncoding("utf-8");
         webApp.setResponseCharacterEncoding("utf-8");
 
-        // Käynnistetään palvelin ja odotetaan yhteyksiä:
-        tomcat.start();
-        tomcat.getServer().await();
+        return tomcat;
     }
 }
