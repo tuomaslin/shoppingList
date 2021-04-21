@@ -1,6 +1,6 @@
 # Embedded Tomcat -projektipohja 
 
-[![JUnit tests](../../actions/workflows/maven.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions) [![Heroku](../../embedded-tomcat-template/actions/workflows/heroku-deploy.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/heroku-deploy.yml) [![GitHub Classroom](../../actions/workflows/classroom.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/classroom.yml)
+[![JUnit tests](../../actions/workflows/maven.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions) [![Heroku](../../actions/workflows/heroku-deploy.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/heroku-deploy.yml) [![GitHub Classroom](../../actions/workflows/classroom.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/classroom.yml)
 
 Tämä Git-repositorio sisältää valmiin Eclipse-projektin, jota voit käyttää Java-kielisen web-sovelluksen pohjana. Projekti on tarkoitettu pohjaksi verkkosovellusten koodaamiseen Haaga-Helian Ohjelmointi 2 -opintojaksolla. 
 
