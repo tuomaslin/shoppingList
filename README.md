@@ -1,20 +1,26 @@
 # Embedded Tomcat -projektipohja 
 
-[![Build Status](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/maven.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions) [![Deploy to heroku](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/heroku-deploy.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/heroku-deploy.yml)
+[![JUnit tests](../../actions/workflows/maven.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions) [![Heroku](../../embedded-tomcat-template/actions/workflows/heroku-deploy.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/heroku-deploy.yml) [![GitHub Classroom](../../actions/workflows/classroom.yml/badge.svg)](https://github.com/ohjelmointi2/embedded-tomcat-template/actions/workflows/classroom.yml)
 
-Tämä malliprojekti on tarkoitettu pohjaksi verkkosovellusten koodaamiseen Haaga-Helian Ohjelmointi 2 -opintojaksolla. Projektissa hyödynnetään Javan Servlet- sekä JSP-teknologioita yhdessä [Apachen Tomcat](http://tomcat.apache.org/) -sovelluspalvelimen kanssa. Projekti sisältää valmiit asetustiedostot sen tuomiseksi Eclipse-sovelluskehittimeen, mutta voit käyttää sitä soveltaen myös muilla kehitystyökaluilla, kuten [VS Code](https://code.visualstudio.com/) tai [IntelliJ IDEA](https://www.jetbrains.com/idea/).
+Tämä Git-repositorio sisältää valmiin Eclipse-projektin, jota voit käyttää Java-kielisen web-sovelluksen pohjana. Projekti on tarkoitettu pohjaksi verkkosovellusten koodaamiseen Haaga-Helian Ohjelmointi 2 -opintojaksolla. 
 
-## Suositeltua taustamateriaalia
+Projektissa hyödynnetään Javan Servlet- sekä JSP-teknologioita yhdessä [Apachen Tomcat](http://tomcat.apache.org/) -sovelluspalvelimen kanssa. Projekti sisältää valmiit asetustiedostot sen tuomiseksi Eclipse-sovelluskehittimeen, mutta voit käyttää sitä soveltaen myös muilla kehitystyökaluilla, kuten [VS Code](https://code.visualstudio.com/) tai [IntelliJ IDEA](https://www.jetbrains.com/idea/).
 
-**[Introduction to Servlets](https://youtu.be/7TOmdDJc14s)**
-
-Tämä video esittelee perusteet HTTP-palvelimen toiminnassa dynaamisten sivujen (servlet) käsittelyssä. Servlettien rakenne sekä yhteys servlettien ja Tomcatin välillä esitetään tällä videolla varsin selkeällä tavalla.
 
 ## Projektin kopioiminen
 
-Voit tallentaa projektin lähdekoodit itsellesi GitHub-palvelusta monilla eri tavoilla. Yksinkertaisimmillaan voit tallentaa sen [zip-pakettina](https://github.com/haagahelia/embedded-tomcat-template/archive/master.zip), jonka tuot itsellesi Eclipseen import-ominaisuudella. 
+Kloonaa tämä Git-repositorio itsellesi Eclipseen valitsemalla File-valikosta:
 
-Mikäli haluat käyttää omassa työssäsi versionhallintaa, voit kloonata projektin joko [Eclipsen Git-pluginin](https://www.google.com/search?q=git+clone+eclipse) tai jonkin ulkoisen [Git-käyttöliittymän](https://www.google.com/search?q=git+bash+clone) avulla. Toinen vaihtoehto on luoda tästä projektista linkitetty kopio, eli ["fork", jossa voit kokeilla vapaasti omia muutoksiasi](https://github.community/t5/Support-Protips/The-difference-between-forking-and-cloning-a-repository/ba-p/1372).
+```
+File → Import → Git → Projects From Git → Clone URI
+```
+
+Sytä Eclipsen Source Git Repository -dialogin URI-kenttään tämän Git-projektin osoite: `https://github.com/ohjelmointi2/embedded-tomcat-template.git`. Tarvittaessa löydät tarkempia ohjeita projektin kloonaamiseksi [Googlella](https://www.google.com/search?q=git+clone+java+project+into+eclipse).
+
+Varmista projektipohjan toimivuus omalla koneellasi suorittamalla siihen kuuluvat testit. Voit suorittaa testit Eclipsessä klikkaamalla projektia Package-näkymässä hiiren kakkospainikkeella ja valitsemalla "Run As"-kohdasta vaihtoehdon "JUnit Test".
+
+Mikäli sinulla on GitHub-tunnukset, voit kopioida projektin myös omalle käyttäjätunnuksellesi ["Use this template"](https://github.com/ohjelmointi2/embedded-tomcat-template/generate)-painikkeella. Tekemällä oman kopion ja kloonaamalla sen Eclipseen voit lisätä tekemäsi muutokset myös takaisin GitHubiin.
+
 
 ## Projektin tiedostot
 
@@ -70,6 +76,13 @@ Sijainti                                | Tarkoitus
 [src/test/resources](src/test/resources)                                | Hakemisto esimerkiksi testien .properties-tiedostoille
 
 ¹ "No file contained in the WEB-INF directory may be served directly to a client by the container. However, the contents of the WEB-INF directory are visible to servlet code..." [Java Servlet Specification Version 2.4](http://download.oracle.com/otn-pub/jcp/servlet-2.4-fr-spec-oth-JSpec/servlet-2_4-fr-spec.pdf)
+
+
+## Suositeltua taustamateriaalia
+
+**[Introduction to Servlets](https://youtu.be/7TOmdDJc14s)**
+
+Tämä video esittelee perusteet HTTP-palvelimen toiminnassa dynaamisten sivujen (servlet) käsittelyssä. Servlettien rakenne sekä yhteys servlettien ja Tomcatin välillä esitetään tällä videolla varsin selkeällä tavalla.
 
 
 ## Riippuvuuksien asentaminen
@@ -174,7 +187,8 @@ Joidenkin isompien muutosten, kuten uusien tiedostojen luomisen yhteydessä, Tom
 Java EE -spesifikaatiossa on määriteltynä tapa, jolla Java-luokat voivat kommunikoida verkkoyhteyksistä huolehtivien sovelluspalvelimien kanssa. Tämän määrittelyn toteuttavista luokista käytetään termiä "servlet".
 
 
-### Yläluokka ja annotaatiot
+### Yliluokka ja annotaatiot
+
 Teknisesti servletit toteutetaan aivan tavallisina Java-luokkina, jotka:
 1. perivät `javax.servlet.http.HttpServlet`-luokan: `extends HttpServlet`
 2. annotoidaan `javax.servlet.annotation.WebServlet`-annotaatiolla: `@WebServlet("/hello")`
