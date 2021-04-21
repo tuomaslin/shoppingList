@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fi.haaga-helia.example</groupId>
-	<artifactId>embedded-tomcat</artifactId>
+	<groupId>io.github.ohjelmointi2</groupId>
+	<artifactId>web-project-template</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Minimal servlet webapp</name>
-	<description>Skeleton project for developing servlet-based web apps with embedded Tomcat</description>
+	<name>Web project template</name>
+	<description>Project template for developing servlet-based web apps</description>
 
 	<properties>
 		<!-- Tomcatin versionumero -->
