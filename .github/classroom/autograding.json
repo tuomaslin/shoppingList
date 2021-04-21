@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Test with JUnit and Maven",
+      "setup": "mvn install -q -DskipTests",
+      "run": "mvn test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    }
+  ]
+}
