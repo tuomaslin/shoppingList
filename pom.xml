@@ -59,6 +59,7 @@
 			<version>${tomcat.version}</version>
 		</dependency>
 
+		<!-- JUnit-testaustyökalu -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
