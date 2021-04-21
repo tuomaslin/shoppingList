@@ -43,7 +43,7 @@ public class Main {
         String webappDirPath = new File("src/main/webapp/").getAbsolutePath();
 
         // Lisätään oma sovelluksemme Tomcatiin palvelimen juureen:
-        Context webApp = tomcat.addWebapp("/", webappDirPath);
+        Context webApp = tomcat.addWebapp("", webappDirPath);
 
         // HUOM! Jos haluat, että palvelin käynnistää itsensä uudelleen muutettuasi
         // tiedostoja, poista kommentti seuraavalta riviltä:
