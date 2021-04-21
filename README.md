@@ -44,6 +44,12 @@ embedded-tomcat
 │   │
 │   └───test
 │       ├───java
+│       │   ├───servlet
+│       │   │       IndexServletTest.java
+│       │   │
+│       │   └───testserver
+│       │           TestServer.java
+│       │
 │       └───resources
 ```
 
@@ -59,6 +65,8 @@ Sijainti                                | Tarkoitus
 [src/main/webapp/WEB-INF](src/main/webapp/WEB-INF)                      | Erityinen hakemisto, jonne on estetty suora pääsy selaimilta ¹
 [src/main/webapp/WEB-INF/index.jsp](src/main/webapp/WEB-INF/index.jsp)  | IndexServlet-luokan käyttämä sivupohja
 [src/test/java](src/test/java)                                          | JUnit-testiluokkien pakettien juurihakemisto
+[src/test/java/servlet/IndexServletTest.java](src/test/java/servlet/IndexServletTest.java)  | IndexServlet-luokan JUnit-testit
+[src/test/java/testserver/TestServer.java](src/test/java/testserver/TestServer.java)  | Apuluokka palvelimen testaamiseksi
 [src/test/resources](src/test/resources)                                | Hakemisto esimerkiksi testien .properties-tiedostoille
 
 ¹ "No file contained in the WEB-INF directory may be served directly to a client by the container. However, the contents of the WEB-INF directory are visible to servlet code..." [Java Servlet Specification Version 2.4](http://download.oracle.com/otn-pub/jcp/servlet-2.4-fr-spec-oth-JSpec/servlet-2_4-fr-spec.pdf)
@@ -165,6 +173,7 @@ Joidenkin isompien muutosten, kuten uusien tiedostojen luomisen yhteydessä, Tom
 
 Java EE -spesifikaatiossa on määriteltynä tapa, jolla Java-luokat voivat kommunikoida verkkoyhteyksistä huolehtivien sovelluspalvelimien kanssa. Tämän määrittelyn toteuttavista luokista käytetään termiä "servlet".
 
+
 ### Yläluokka ja annotaatiot
 Teknisesti servletit toteutetaan aivan tavallisina Java-luokkina, jotka:
 1. perivät `javax.servlet.http.HttpServlet`-luokan: `extends HttpServlet`
@@ -227,23 +236,22 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 HTML-muotoisten vastausten muodostaminen edellyttäisi, että sekoitamme Java-koodia ja HTML:ää, mistä tulisi nopeasti vaikeaselkoista ja huonosti ylläpidettävää:
 
 ```java
-/* Tässä esimerkissä on hyödynnetty Java 13:n TextBlock-ominaisuutta 
- * monirivisen merkkijonon muodostamiseksi: https://wiki.eclipse.org/Java13/Examples */
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
         throws ServletException, IOException {
 
+    String timeString = LocalTime.now().toString();
+
     // FIXME: vaikeasti ylläpidettävää koodia!
-    resp.getWriter().println("""
-            <html>
-                <head>
-                    <title>Hello</title>
-                </head>
-                <body>
-                    <h1>Hello world!</h1>
-                </body>
-            </html>
-        """);
+    resp.getWriter().println("<html>\n"
+            + "    <head>\n"
+            + "        <title>Hello</title>\n"
+            + "    </head>\n"
+            + "    <body>\n"
+            + "        <h1>Hello world!</h1>\n"
+            + "        <p class=\"time\">Time is now " + timeString + "!</p>\n"
+            + "    </body>\n"
+            + "</html>");
 }
 ```
 
