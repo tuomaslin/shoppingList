@@ -154,32 +154,30 @@ Voit nyt navigoida selaimellasi osoitteeseen [http://localhost:8080](http://loca
 
 Esimerkkisivu selostaa muutamia vaiheita, jotka palvelinohjelmisto kävi läpi toteuttakseen vastauksen selaimesi pyyntöön. Käymme nämä vaiheet läpi seuraavissa luvuissa.
 
-Mikäli tuloste sisältää seuraavanlaisia virheilmoituksia, portti 8080 on jo varattuna koneellasi ja joudut sulkemaan käynnissä olevan Tomcat-palvelimen alla olevan ohjeen mukaisesti.
+
+### Ongelma Tomcatin käynnistyksessä
+
+Mikäli palvelin ei käynnisty oikein ja tuloste sisältää seuraavanlaisia virheilmoituksia, portti 8080 on jo varattuna koneellasi:
 
 ```log
 INFO: Initializing ProtocolHandler ["http-nio-8080"]
-tammik. 28, 2020 10:17:42 AP. org.apache.catalina.core.StandardService initInternal
+tammik. 28, 2021 10:17:42 AP. org.apache.catalina.core.StandardService initInternal
 SEVERE: Failed to initialize connector [Connector[HTTP/1.1-8080]]
 org.apache.catalina.LifecycleException: Protocol handler initialization failed
-	at org.apache.catalina.connector.Connector.initInternal(Connector.java:995)
-	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:136)
-	...
-	at launch.Main.main(Main.java:44)
+    at org.apache.catalina.connector.Connector.initInternal(Connector.java:995)
+    at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:136)
+    ...
+    at launch.Main.main(Main.java:44)
 Caused by: java.net.BindException: Address already in use: bind
-	at java.base/sun.nio.ch.Net.bind0(Native Method)
-	at java.base/sun.nio.ch.Net.bind(Net.java:461)
+    at java.base/sun.nio.ch.Net.bind0(Native Method)
+    at java.base/sun.nio.ch.Net.bind(Net.java:461)
 ```
 
-### Palvelinohjelmiston *uudelleenkäynnistys*
+Tämä johtuu usein siitä, että olet käynnistänyt palvelimesi useaan kertaan, ja jokin aikaisemmista suorituksista on edelleen käynnissä taustalla. 
 
-Tomcat on konfiguroitu lataamaan muuttuneet Java-luokat uudelleen automaattisesti ilman uudelleenkäynnistystä. Kun teet muutoksia ja tallennat tiedostoja, käännetään muuttuneet tiedostot automaattisesti ja Tomcat lataa ne uudelleen:
+Eclipsen "console"-välilehdeltä löytyy painikkeet ["terminate"](https://stackoverflow.com/a/1515229) sekä "remove...", joiden avulla saat suljettua vanhat prosessit. Klikkaa vuorotellen "terminate" ja "remove" -painikkeita, kunnes konsoli on kokonaan tyhjä. Voit joutua sulkemaan isonkin kasan prosesseja, jos niitä on jäänyt roikkumaan.
 
-```
-tammik. 28, 2020 10:14:57 AP. org.apache.catalina.core.StandardContext reload
-INFO: Reloading Context with name [] is completed
-```
-
-Joidenkin isompien muutosten, kuten uusien tiedostojen luomisen yhteydessä, Tomcat ei pysty lataamaan muutoksia "lennossa". Tällöin joudut pysäyttämään palvelimen ensin Eclipsen Console-näkymän [oikeassa yläkulmassa olevasta punaisesta "terminate"-painikkeesta](https://stackoverflow.com/a/1515229) ja käynnistämään `Main.java`-tiedoston uudelleen.
+Käynnistä lopuksi `Main.java`-tiedosto uudelleen.
 
 
 ## Servlet-pohjaisen sovelluksen anatomia
