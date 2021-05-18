@@ -9,7 +9,7 @@
 	href="https://unpkg.com/sakura.css/css/sakura-ink.css" type="text/css">
 </head>
 <body>
-	<h2>Shopping list</h2>
+	<h2>Shopping list eli ostoslista</h2>
 	
 	<form name="testi" action="/shop" method="post">
     	<input name="title" type="text" required placeholder="type item here..." autofocus /> <br />
