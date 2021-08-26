@@ -13,4 +13,5 @@ Mainly a database project for a shoppinglist app (other servlets included).
 
 #Page where one can calculate how many days there is between today and given date. <code>/date</code>
 
-![date](https://user-images.githubusercontent.com/84401722/118772493-799a0000-b88c-11eb-9ea6-a016b23f4832.png)
+![date](https://user-images.githubusercontent.com/84401722/130977176-ff6fb844-a2fc-4900-bbf1-9805a6c86396.png)
+
